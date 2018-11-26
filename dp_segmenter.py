@@ -21,6 +21,13 @@ for i in range(n):
 		else:
 			idf[i].append(int(1e18)) 
  
+# A score of a set of words is the product of their idf values
+# Higher score means rarer sentence and lower score means a more comman sentence
+# Words not in dictionary are given idf score very high (1e18) since we don't want them to appear
+# dp[i] = best score considering first i letters of sentence
+# words[i] = the segmentation formed by dp[i]
+# dp[i] = min(dp[j]*idf[j][i]) j < i
+
 dp = [0]*(n+1)
 words = [[]]*(n+1)
 for i in range(1,n+1):
